@@ -1,0 +1,10 @@
+title Ejemplo Login
+
+IClient->M1: El cliente hace su login/registro
+M1->SUser:El modulo procesa la informacion y luego la manda al service user para que se encargue del login
+SUser->DB: Se buscan los datos del usuario
+SUser->SUser: Se verifican los datos del usuario 
+SUser->Redis: Almacena las credenciales de la db del usuario por (T)hrs
+SUser->SUser: Se genera un token del usuario
+SUser->M1: Regresa el token de auth
+M1->IClient: Regresa el token de auth

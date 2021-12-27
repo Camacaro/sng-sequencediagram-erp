@@ -1,0 +1,10 @@
+title Ejemplo Request
+
+IClient->M1: Cualquier peticion
+M1->SUser: El modulo obtiene el token y se lo manda al service user
+SUser->SUser:Vefifica el token
+SUser->Redis: Se busca las credenciales del usuario y se reinicia el tiempo en redis
+SUser->M1: Se regresan las credenciales del usuario
+M1->DB: Se hace la conexcion a la db 
+M1->M1: Se proceso la solicitud del cliente
+M1->IClient: Se regresa la informacion
